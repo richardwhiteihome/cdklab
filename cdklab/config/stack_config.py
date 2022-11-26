@@ -15,16 +15,16 @@ RegionName = {
 
 #replace key value pairs with your actual accounts
 Accounts = {
-    "PROD" : "346808235809",
-    "ALPHA": "346808235809",
-    "BETA": "346808235809"
+    "PROD" : "< account number >",
+    "ALPHA": "< account number >",
+    "BETA": "< account number >"
 }
 
 #replace key value pairs with your actual ec2 pem file names with out the PEM extension
 EC2_Keys = {
-    "prod" : "seclab",
-    "alpha": "seclab",
-    "beta": "seclab"
+    "prod" : "< ec2 key >",
+    "alpha": "< ec2 key >",
+    "beta": "< ec2 key >"
 }
 
 # KMS Keys to be created in the KMS Stack
