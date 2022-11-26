@@ -75,7 +75,7 @@ class data_stack(NestedStack):
 
         kmskey = kms.Key(self, 'KMSKey' ,
                 removal_policy=aws_cdk.RemovalPolicy.DESTROY,
-                alias=stage+'/rds_kms/joomla',
+                alias=stage+'/rds_kms/cdklab',
                 # trust_account_identities=True,
                 description='KMS key for encrypting the objects in RDS',
                 enable_key_rotation=True,
@@ -84,17 +84,17 @@ class data_stack(NestedStack):
 
 
 
-        my_secret = rds.Credentials.from_generated_secret("mysql_admin", secret_name=stage+"/"+service_prefix+"/joomla")
+        my_secret = rds.Credentials.from_generated_secret("mysql_admin", secret_name=stage+"/"+service_prefix+"/cdklab")
 
         db = rds.DatabaseInstance(self, "Instance",
                 engine=rds.DatabaseInstanceEngine.mysql(version=rds.MysqlEngineVersion.VER_8_0_28),
                 vpc=vpc,
                 multi_az=True,
-                instance_identifier=stage+"-joomla",
+                instance_identifier=stage+"-cdklab",
                 instance_type=  ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE2, ec2.InstanceSize.SMALL),
                 credentials=my_secret,
                 storage_encryption_key=kmskey,
-                database_name="joomla",
+                database_name="cdklab",
                 vpc_subnets={
                     "subnet_type": ec2.SubnetType.PRIVATE_ISOLATED
                 },
